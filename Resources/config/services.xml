@@ -16,7 +16,9 @@
         <service id="bacon_menu.twig.extension.menu_extension" class="Bacon\Bundle\MenuBundle\Twig\Extension\MenuExtension">
             <tag name="twig.extension" />
             <argument type="service" id="knp_menu.helper" />
-            <argument type="service" id="service_container" />
+            <argument type="service" id="kernel" />
+            <argument>%bacon.name_class.menu%</argument>
+            <argument>%bacon.name_method.menu%</argument>
         </service>
     </services>
 </container>

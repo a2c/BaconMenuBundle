@@ -5,21 +5,40 @@ namespace Bacon\Bundle\MenuBundle\Twig\Extension;
 use Knp\Menu\Twig\Helper;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use \Twig_Extension;
+use \AppKernel;
 
 class MenuExtension extends Twig_Extension
 {
-
+    /**
+     * @var Helper
+     */
     private $helper;
-    private $container;
+
+    /**
+     * @var AppKernel
+     */
+    private $kernel;
+
+    /**
+     * @var string
+     */
+    private $className;
+
+    /**
+     * @var string
+     */
+    private $methodName;
 
     /**
      * @param Helper $helper
-     * @param ContainerInterface $container
+     * @param AppKernel $container
      */
-    public function __construct(Helper $helper, ContainerInterface $container)
+    public function __construct(Helper $helper, AppKernel $kernel,$className,$methodName)
     {
-        $this->helper = $helper;
-        $this->container = $container;
+        $this->helper       = $helper;
+        $this->kernel       = $kernel;
+        $this->className    = $className;
+        $this->methodName   = $methodName;
     }
 
     /**
@@ -42,8 +61,9 @@ class MenuExtension extends Twig_Extension
 
     public function renderFull()
     {
-        $kernel  = $this->container->get('kernel');
-        $bundles = $kernel->getBundles();
+
+        $bundles = $this->kernel->getBundles();
+
         $return  = '';
 
         foreach ($bundles as $bundle) {
@@ -53,10 +73,10 @@ class MenuExtension extends Twig_Extension
             $bundleAlias        =   $bundle->getName();
 
             if (file_exists($bundlePath . '/Menu/Builder.php')) {
-                $classFullName = $bundleNamespace . '\\' . $this->container->getParameter('bacon.name_class.menu');
+                $classFullName = $bundleNamespace . '\\' . $this->className;
 
-                if (method_exists($classFullName,$this->container->getParameter('bacon.name_method.menu'))) {
-                    $return .= $this->helper->render($bundleAlias .':Builder:'. $this->container->getParameter('bacon.name_method.menu'),array(
+                if (method_exists($classFullName,$this->methodName)) {
+                    $return .= $this->helper->render($bundleAlias .':Builder:'. $this->methodName,array(
                         'firstClass' => 'teste_primeira_classe',
                         'currentClass'  => 'active'
                     ));

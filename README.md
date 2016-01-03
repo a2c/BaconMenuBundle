@@ -1,6 +1,11 @@
 BaconMenuBundle
 ===============
 
+[![Codacy Badge](https://api.codacy.com/project/badge/grade/3bf0a73bcb79480985d4f1f80062e9c9)](https://www.codacy.com/app/adan-grg/BaconMenuBundle)
+[![Latest Stable Version](https://poser.pugx.org/baconmanager/menu-bundle/v/stable)](https://packagist.org/packages/baconmanager/menu-bundle)
+[![License](https://poser.pugx.org/baconmanager/menu-bundle/license)](https://packagist.org/packages/baconmanager/menu-bundle)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/9d14ac78-8fdc-45a6-9708-d81ac752ad66/mini.png)](https://insight.sensiolabs.com/projects/9d14ac78-8fdc-45a6-9708-d81ac752ad66)
+
 Este bundle é responsavel por Customizar a criação de menus do KnpMenuBundle
 
 ## Instalação
