@@ -3,7 +3,6 @@
 namespace Bacon\Bundle\MenuBundle\Twig\Extension;
 
 use Knp\Menu\Twig\Helper;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use \Twig_Extension;
 use \AppKernel;
 
