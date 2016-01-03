@@ -1,0 +1,26 @@
+{
+    "name": "baconmanager/menu-bundle",
+    "description": "This bundle of symfony2",
+    "keywords": ["Menu","Bundle","KnpMenuBundle","Custom"],
+    "type": "symfony-bundle",
+    "license":      "MIT",
+    "authors": [
+        {
+            "name": "Adan Felipe Medeiros",
+            "email": "adan.grg@gmail.com"
+        },
+        {
+            "name": "Jonas Vieira Pereira",
+            "email": "jonasvpereira@gmail.com"
+        },
+        {
+            "name": "Mateus Guerra"
+        }
+    ],
+    "require": {
+    	"knplabs/knp-menu-bundle": "~2"
+    },
+    "autoload": {
+        "psr-4": { "Bacon\\Bundle\\MenuBundle\\": "" }
+    }
+}
