@@ -2,10 +2,7 @@
 
 namespace Bacon\Bundle\MenuBundle\Twig\Extension;
 
-use Knp\Menu\ItemInterface;
 use Knp\Menu\Twig\Helper;
-use Knp\Menu\Util\MenuManipulator;
-use Knp\Menu\Matcher\MatcherInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use \Twig_Extension;
 
@@ -13,19 +10,15 @@ class MenuExtension extends Twig_Extension
 {
 
     private $helper;
-    private $matcher;
-    private $menuManipulator;
     private $container;
 
     /**
      * @param Helper $helper
      * @param ContainerInterface $container
      */
-    public function __construct(Helper $helper, MatcherInterface $matcher = null, MenuManipulator $menuManipulator = null,ContainerInterface $container)
+    public function __construct(Helper $helper, ContainerInterface $container)
     {
         $this->helper = $helper;
-        $this->matcher = $matcher;
-        $this->menuManipulator = $menuManipulator;
         $this->container = $container;
     }
 
@@ -44,7 +37,7 @@ class MenuExtension extends Twig_Extension
      */
     public function getName()
     {
-        return 'a2c_menu';
+        return 'bacon_menu';
     }
 
     public function renderFull()
