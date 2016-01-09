@@ -28,6 +28,23 @@ public function registerBundles()
     // ...
 }
 ```
+## Configuração 
+
+Adicionar as configurações abaixo no arquivo **app/config/config.yml**
+
+```yaml
+#Menu
+knp_menu:
+    # use "twig: false" to disable the Twig extension and the TwigRenderer
+    twig:
+        template: BaconCoreBundle:partial:menu.html.twig
+    #  if true, enables the helper for PHP templates
+    templating: false
+    # the renderer to use, list is also available by default
+    default_renderer: twig
+```
+
+## Criando um menu
 Para criar um novo menu basta criar uma classe no namespace MyBundle/Menu/Builder como no exemplo abaixo:
 
 ```php
@@ -55,7 +72,7 @@ class Builder extends ContainerAware
     }
 }
 ```
-Renderizando o menu no layout(twig):
+## Renderizando o menu no layout(twig):
 
 ```
 {{ bacon_menu_full_render() }}
