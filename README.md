@@ -47,6 +47,8 @@ knp_menu:
 ## Criando um menu
 Para criar um novo menu basta criar uma classe no namespace MyBundle/Menu/Builder como no exemplo abaixo:
 
+Para versão symfony =< 2.7
+
 ```php
 <?php
 // src/AppBundle/Menu/Builder.php
@@ -72,6 +74,38 @@ class Builder extends ContainerAware
     }
 }
 ```
+
+Para versão do symfony >= 2.8
+
+```php
+<?php
+// src/AppBundle/Menu/Builder.php
+namespace AppBundle\Menu;
+
+use Knp\Menu\FactoryInterface;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerAwareTrait;
+
+class Builder implements ContainerAwareInterface
+{
+	use ContainerAwareTrait;
+	
+    public function addMenu(FactoryInterface $factory, array $options)
+    {
+        $menu = $factory->createItem('root');
+
+        $translate = $this->container->get('translator');
+
+        // Menu Catalog
+        $menu->addChild($translate->trans('Category'))->setAttribute('icon', '<i class="fa fa-book"></i>');
+        $menu[$translate->trans('Category')]->addChild($translate->trans('List'),array('route' => 'admin_category'));
+        $menu[$translate->trans('Category')]->addChild($translate->trans('New'),array('route' => 'admin_category_new'));
+
+        return $menu;
+    }
+}
+```
+
 ## Renderizando o menu no layout(twig):
 
 ```
