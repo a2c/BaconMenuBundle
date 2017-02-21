@@ -40,6 +40,16 @@ class MenuExtension extends Twig_Extension
         $this->methodName   = $methodName;
     }
 
+    public function initRuntime(\Twig_Environment $environment)
+    {
+        // TODO: Implement initRuntime() method.
+    }
+
+    public function getGlobals()
+    {
+        return [];
+    }
+
     /**
      * @return array
      */
